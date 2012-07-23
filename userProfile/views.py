@@ -24,7 +24,7 @@ def login(request):
 			# Correct password, and the user is marked "active"
 			auth.login(request, user)
 			# Redirect to a success page.
-			return HttpResponseRedirect("/courses/home/")
+			return HttpResponseRedirect("/courses/all/")
 		else:
 			# Show an error page
 			return HttpResponseRedirect("/accounts/login/")    
