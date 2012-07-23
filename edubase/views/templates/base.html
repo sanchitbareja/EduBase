@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>{% block title %}EduBase{% endblock %}</title>
+
+    <!-- Included CSS Files -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}foundation3/stylesheets/foundation.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}foundation3/stylesheets/app.css">
+
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" href="{{ STATIC_URL }}foundation3/stylesheets/ie.css">
+    <![endif]-->
+
+    <script src="{{ STATIC_URL }}foundation3/javascripts/modernizr.foundation.js"></script>
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    {% block header %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="row">
+      <div class="seven columns">
+        <h2><a href="index.html"><img src="{{ STATIC_URL }}images/Vinaya_logo_small.png"></a></h2>
+      </div>
+      <div class="five columns">
+        {% if user.is_authenticated %}
+          <ul class="nav-bar">
+		        <li class="has-flyout">
+		          <a href="">{{ user.username }}</a>
+		          <a href="" class="flyout-toggle"><span> </span></a>
+		          <ul class="flyout">
+		            <li><a href="/courses/all/">My Transcript</a></li>
+		            <li><a href="/courses/all/">My Account Information</a></li>
+		            <li><a href="/courses/all/">Karma Rewards</a></li>
+		            <li><a href="/accounts/logout/">Logout</a></li>
+		          </ul>
+		        </li>
+		        <li><a href="/courses/all/">Calendar</a></li>
+		        <li><a href="/courses/all/">New Courses</a></li>
+		      </ul>
+        {% else %}
+          <ul class="button-group three-up">
+            <br />
+            <li><a href="/accounts/signup/" class="button">Sign Up</a></li>
+            <li><a href="/accounts/login/" class="button">Login</a></li>
+            <li><a href="/courses/all/" class="button">Courses</a></li>
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <!-- Included JS Files -->
+    <script src="{{ STATIC_URL }}foundation3/javascripts/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}foundation3/javascripts/jquery.reveal.js"></script>
+    <script src="{{ STATIC_URL }}foundation3/javascripts/jquery.orbit-1.4.0.js"></script>
+    <script src="{{ STATIC_URL }}foundation3/javascripts/jquery.customforms.js"></script>
+    <script src="{{ STATIC_URL }}foundation3/javascripts/jquery.placeholder.min.js"></script>
+    <script src="{{ STATIC_URL }}foundation3/javascripts/jquery.tooltips.js"></script>
+    <script src="{{ STATIC_URL }}foundation3/javascripts/app.js"></script>
+
+    {% block footer %}{% endblock %}
+  </body>
+</html>

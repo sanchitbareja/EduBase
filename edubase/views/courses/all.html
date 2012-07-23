@@ -1,0 +1,127 @@
+{% extends "templates/base.html" %}
+
+{% block title %}EduBase: Courses{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="twelve columns">
+      <h4>New Courses</h4>
+      <ul class="block-grid four-up">
+        <li>
+          <div style="position:relative; height:160px;">
+            <div id="course-grid" style="top:0px; left:0px; position:absolute; z-index:100000; background-color:white; height:160px">              
+              <img src="https://s3.amazonaws.com/coursera/topics/hci/small-icon.hover.png" />
+              <br />
+              <p>Human-Computer Interaction</p>
+            </div>
+            <div id="course-grid-details" style="top:0px; left:0px; position:absolute; z-index:99999; background-color:white; height:160px;">
+              <p><a href="new_course_signup.html" class="small secondary button">Human-Computer Interaction »</a></p>
+              <img src="{{ STATIC_URL }}images/universities/stanford_logo.jpg" height="50%"/>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div style="position:relative; height:160px;">
+            <div id="course-grid" style="top:0px; left:0px; position:absolute; z-index:100000; background-color:white; height:160px">
+              <img src="https://s3.amazonaws.com/coursera/topics/vision/small-icon.hover.png" />
+              <br />
+              <p>Computer Vision Fundamentals</p>
+            </div>
+            <div id="course-grid-details" style="top:0px; left:0px; position:absolute; z-index:99999; background-color:white; height:160px;">
+              <p><a href="new_course_signup.html" class="small secondary button">Computer Vision: The Fundamentals »</a></p>
+              <img src="{{ STATIC_URL }}images/universities/ucberkeley_logo.jpg" height="50%"/>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div style="position:relative; height:160px;">
+            <div id="course-grid" style="top:0px; left:0px; position:absolute; z-index:100000; background-color:white; height:160px">              
+              <img src="https://s3.amazonaws.com/coursera/topics/soc101/small-icon.hover.png" />
+              <br />
+              <p>Introduction to Sociology</p>
+            </div>
+            <div id="course-grid-details" style="top:0px; left:0px; position:absolute; z-index:99999; background-color:white; height:160px;">
+              <p><a href="new_course_signup.html" class="small secondary button">Introduction to Sociology »</a></p>
+              <img src="{{ STATIC_URL }}images/universities/harvard_logo.jpg" height="50%"/>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div style="position:relative; height:160px;">
+            <div id="course-grid" style="top:0px; left:0px; position:absolute; z-index:100000; background-color:white; height:160px">              
+              <img src="https://s3.amazonaws.com/coursera/topics/crypto/small-icon.hover.png" />
+              <br />
+              <p>Cryptography</p>
+            </div>
+            <div id="course-grid-details" style="top:0px; left:0px; position:absolute; z-index:99999; background-color:white; height:160px;">
+              <p><a href="new_course_signup.html" class="small secondary button">Cryptography »</a></p>
+              <img src="{{ STATIC_URL }}images/universities/mit_logo.jpg" height="50%"/>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div style="position:relative; height:160px;">
+            <div id="course-grid" style="top:0px; left:0px; position:absolute; z-index:100000; background-color:white; height:160px">              
+              <img src="https://s3.amazonaws.com/coursera/topics/algo/small-icon.hover.png" />
+              <br />
+              <p>Algorithms:Design and Analysis</p>
+            </div>
+            <div id="course-grid-details" style="top:0px; left:0px; position:absolute; z-index:99999; background-color:white; height:160px;">
+              <p><a href="new_course_signup.html" class="small secondary button">Algorithms: Design and Analysis »</a></p>
+              <img src="{{ STATIC_URL }}images/universities/stanford_logo.jpg" height="50%"/>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div style="position:relative; height:160px;">
+            <div id="course-grid" style="top:0px; left:0px; position:absolute; z-index:100000; background-color:white; height:160px">              
+              <img src="https://s3.amazonaws.com/coursera/topics/vaccines/small-icon.hover.png" />
+              <br />
+              <p>Vaccines</p>
+            </div>
+            <div id="course-grid-details" style="top:0px; left:0px; position:absolute; z-index:99999; background-color:white; height:160px;">
+              <p><a href="new_course_signup.html" class="small secondary button">Vaccines »</a></p>
+              <img src="{{ STATIC_URL }}images/universities/stanford_logo.jpg" height="50%"/>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  <script type="text/javascript">
+    var courses = $("div[id=course-grid]");
+    var courses_details = $("div[id=course-grid-details]");
+    for (var course in courses){
+      $(courses[course]).hover(
+        function(){
+          // $(this).hide();
+          var newZ = parseInt($(this).css("zIndex"))-2;
+          $(this).animate({zIndex:newZ},1);
+          // $(this).hide();
+          // $(this).transition({ opacity: 0,  x:100 });
+        },
+        function(){
+          // $(this).show();
+          // $(this).animate({opacity:100});
+          // $(this).transition({ opacity: 1, x:0});
+        });
+      $(courses_details[course]).hover(
+        function(){
+          // $(this).hide();
+          // $(this).animate({opacity:0});
+          // $(this).hide();
+          // $(this).transition({ opacity: 0,  x:100 });
+        },
+        function(){
+          var newZ = parseInt($(this).css("zIndex"))-2;
+          $(this).animate({zIndex:newZ},1);
+          // $(courses[course]).show();
+          // $(courses[course]).animate({opacity:100});
+          // $(this).transition({ opacity: 1, x:0});
+        });
+    }
+  </script>
+{% endblock %}

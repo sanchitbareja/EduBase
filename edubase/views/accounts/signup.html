@@ -1,0 +1,43 @@
+{% extends "templates/base.html" %}
+
+{% block title %}EduBase: Get Started!{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="twelve columns">
+			<h1>Create an account</h1>
+			<form name="input" action="/accounts/signup/" method="post">{% csrf_token %}
+				<div class="row">
+					<div class="twelve columns">
+						<p><label for="standardInput">Username:</label>
+							<input id="standardInput" type="text" name="username" maxlength="30" />
+							<span class="helptext">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only</span>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six columns">
+						<p>
+							<label for="standardInput">Password:</label>
+							<input type="password" name="password1" id="standardInput" />
+							<span class="helptext">Choose your password for logging in</span>
+						</p>
+					</div>
+					<div class="six columns">
+						<p>
+							<label for="standardInput">Password confirmation:</label>
+							<input type="password" name="password2" id="standardInput" />
+							<span class="helptext">Enter the same password for verificatio.</span>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="twelve columns">
+						<input type="submit" value="Create my account">
+					</div>
+				</div>
+		  	</form>
+	  	</div>
+	</div>
+
+{% endblock %}
